@@ -1,6 +1,7 @@
 import StyledComponentsRegistry from './registry'
 import Header from './global/ui/outlines/Header'
 import Footer from './global/ui/outlines/Footer'
+
 import './globals.css'
 
 export default function RootLayout({
@@ -13,7 +14,7 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <Header />
-          <main>{children}</main>
+          <main className="main-content">{children}</main>
           <Footer />
         </StyledComponentsRegistry>
       </body>
