@@ -5,9 +5,45 @@ import Image from 'next/image'
 import { styled } from 'styled-components'
 import { SlLogin } from 'react-icons/sl'
 import { FaUserPlus, FaHome, FaSearch } from 'react-icons/fa'
+import colors from '../../styles/colors'
+import sizes from '../../styles/sizes'
 import logo from '../../assets/images/logo.png'
 
-const StyledHeader = styled.header``
+const { primary, light } = colors
+const { small, nomral, medium, big } = sizes
+
+const StyledHeader = styled.header`
+  .site-top {
+    background: ${light};
+    height: 45px;
+
+    .layout-width {
+      display: flex;
+      justify-content: space-between;
+
+      & > div {
+        display: flex;
+        align-items: center;
+        height: 45px;
+
+        a + a {
+          margin-left: 10px;
+        }
+      }
+
+      svg {
+        font-size: ${big};
+      }
+    }
+  }
+
+  .logo-search {
+    .layout-width {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+`
 const StyledForm = styled.form``
 const StyledMenu = styled.nav``
 
@@ -47,7 +83,9 @@ const Header = () => {
                 name="skey"
                 placeholder="검색어를 입력하세요"
               />
-              <button type="submit">검색하기</button>
+              <button type="submit">
+                <FaSearch />
+              </button>
             </StyledForm>
           </div>
         </div>
