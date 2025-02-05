@@ -53,7 +53,13 @@ const Header = () => {
         </div>
       </div>
       {/* logo-search */}
-      <nav></nav>
+      <StyledMenu>
+        <div className="layout-width">
+          <Link href="#">메뉴1</Link>
+          <Link href="#">메뉴2</Link>
+          <Link href="#">메뉴3</Link>
+        </div>
+      </StyledMenu>
     </StyledHeader>
   )
 }
