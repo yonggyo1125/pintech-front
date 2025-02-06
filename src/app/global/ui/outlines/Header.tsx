@@ -116,7 +116,7 @@ const Header = () => {
       <div className="logo-search">
         <div className="layout-width">
           <Link href="/" className="logo">
-            <Image src={logo} alt="로고" />
+            <Image src={logo} alt="로고" priority={true} />
           </Link>
 
           <StyledForm method="GET" action="/board/search" autoComplete="off">
