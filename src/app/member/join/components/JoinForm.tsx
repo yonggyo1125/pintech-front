@@ -17,7 +17,27 @@ const JoinForm = ({ form, onClick, onChange, onSelectDate }) => {
     <>
       <StyledForm autoComplete="off">
         <input type="hidden" name="gender" value={form?.gender ?? ''} />
-
+        <input type="hidden" name="birthDt" value={form?.birthDt ?? ''} />
+        <input
+          type="hidden"
+          name="requiredTerms1"
+          value={form?.requiredTerms1 ?? false}
+        />
+        <input
+          type="hidden"
+          name="requiredTerms2"
+          value={form?.requiredTerms2 ?? false}
+        />
+        <input
+          type="hidden"
+          name="requiredTerms3"
+          value={form?.requiredTerms3 ?? false}
+        />
+        <input
+          type="hidden"
+          name="optionalTerms"
+          value={form?.optionalTerms ?? ''}
+        />
         <Input
           type="text"
           name="email"
@@ -81,6 +101,14 @@ const JoinForm = ({ form, onClick, onChange, onSelectDate }) => {
           onChange={onChange}
         />
 
+        <Input
+          type="text"
+          name="phoneNumber"
+          placeholder="휴대폰번호"
+          value={form?.phoneNumber ?? ''}
+          onChange={onChange}
+        />
+
         <div className="row">
           <div className="tit">성별</div>
           <div className="radio-buttons">
@@ -109,6 +137,49 @@ const JoinForm = ({ form, onClick, onChange, onSelectDate }) => {
               selected={form?.birthDt ?? ''}
               onChange={(date) => onSelectDate(date)}
             />
+          </div>
+        </div>
+
+        <div className="terms">
+          <div
+            className="terms-row"
+            onClick={() =>
+              onClick('requiredTerms1', !Boolean(form?.requiredTerms1))
+            }
+          >
+            {form?.requiredTerms1 ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+            이용약관에 동의합니다.
+          </div>
+          <div
+            className="terms-row"
+            onClick={() =>
+              onClick('requiredTerms2', !Boolean(form?.requiredTerms2))
+            }
+          >
+            {form?.requiredTerms2 ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+            개인정보 처리방침에 동의합니다.
+          </div>
+          <div
+            className="terms-row"
+            onClick={() =>
+              onClick('requiredTerms3', !Boolean(form?.requiredTerms3))
+            }
+          >
+            {form?.requiredTerms3 ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+            개인정보 수집 및 이용에 동의합니다.
+          </div>
+
+          <div
+            className="terms-row"
+            onClick={() =>
+              onClick(
+                'optionalTerms',
+                form?.optionalTerms ? '' : 'advertisement',
+              )
+            }
+          >
+            {form?.optionalTerms ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+            광고성 정보 전송에 동의합니다.(선택)
           </div>
         </div>
       </StyledForm>
