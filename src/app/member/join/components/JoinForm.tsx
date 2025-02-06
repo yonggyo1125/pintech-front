@@ -16,27 +16,31 @@ const JoinForm = ({ form, onClick, onChange, onSelectDate }) => {
   return (
     <>
       <StyledForm autoComplete="off">
-        <input type="hidden" name="gender" value={form?.gender ?? ''} />
-        <input type="hidden" name="birthDt" value={form?.birthDt ?? ''} />
+        <input type="hidden" name="gender" defaultValue={form?.gender ?? ''} />
+        <input
+          type="hidden"
+          name="birthDt"
+          defaultValue={form?.birthDt ?? ''}
+        />
         <input
           type="hidden"
           name="requiredTerms1"
-          value={form?.requiredTerms1 ?? false}
+          defaultValue={form?.requiredTerms1 ?? false}
         />
         <input
           type="hidden"
           name="requiredTerms2"
-          value={form?.requiredTerms2 ?? false}
+          defaultValue={form?.requiredTerms2 ?? false}
         />
         <input
           type="hidden"
           name="requiredTerms3"
-          value={form?.requiredTerms3 ?? false}
+          defaultValue={form?.requiredTerms3 ?? false}
         />
         <input
           type="hidden"
           name="optionalTerms"
-          value={form?.optionalTerms ?? ''}
+          defaultValue={form?.optionalTerms ?? ''}
         />
         <Input
           type="text"
