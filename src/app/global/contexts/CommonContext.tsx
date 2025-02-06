@@ -1,5 +1,6 @@
 'use client'
 import { createContext, useState } from 'react'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 
 type ContextType = {
   state?: { title?: string }
@@ -17,7 +18,14 @@ const CommonProvider = ({ children }) => {
   }
 
   return (
-    <CommonContext.Provider value={value}>{children}</CommonContext.Provider>
+    <CommonContext.Provider value={value}>
+      <HelmetProvider>
+        <>
+          <Helmet>{title && <title>{title}</title>}</Helmet>
+          {children}
+        </>
+      </HelmetProvider>
+    </CommonContext.Provider>
   )
 }
 
