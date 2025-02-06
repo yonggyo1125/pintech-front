@@ -24,3 +24,17 @@ const Message = styled.div`
       color: ${colors[color] ?? info};
     `}
 `
+
+const Messages = ({ children, color }) => {
+  if (!children) return <></>
+
+  const messages = Array.isArray(children) ? children : [children]
+
+  return messages.map((message, i) => (
+    <Message key={message + '_' + i} color={color}>
+      {message}
+    </Message>
+  ))
+}
+
+export default Messages
