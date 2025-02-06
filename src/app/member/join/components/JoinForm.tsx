@@ -1,9 +1,16 @@
 import React from 'react'
+import styled from 'styled-components'
+
+import { Input } from '@/app/global/components/FormComponents'
+
+const StyledForm = styled.form``
 
 const JoinForm = () => {
   return (
     <>
-      <h1>양식...</h1>
+      <StyledForm autoComplete="off">
+        <Input type="text" name="email" placeholder="이메일" />
+      </StyledForm>
     </>
   )
 }
