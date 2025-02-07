@@ -179,13 +179,14 @@ export const processLogin = async (params, formData: FormData) => {
  *
  */
 export const getUserInfo = async () => {
+  const cookie = await cookies()
+  if (!cookie.has('token')) return
+
   try {
     const res = await apiRequest('/member')
     if (res.status === 200) {
       const result = await res.json()
       return result.success && result.data
     }
-  } catch (err) {
-    console.error('err', err)
-  }
+  } catch (err) {}
 }
