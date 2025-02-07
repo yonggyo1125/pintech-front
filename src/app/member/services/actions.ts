@@ -2,6 +2,7 @@
 import { redirect } from 'next/navigation'
 import { format } from 'date-fns'
 import { cookies } from 'next/headers'
+import apiRequest from '@/app/global/libs/apiRequest'
 
 /**
  * 회원가입 처리
@@ -178,7 +179,13 @@ export const processLogin = async (params, formData: FormData) => {
  *
  */
 export const getUserInfo = async () => {
-  const cookie = await cookies()
-  const token = cookie.get('token')
-  if (!token || !token.trim()) return
+  try {
+    const res = await apiRequest('/member')
+    if (res.status === 200) {
+      const result = await res.json()
+      return result.success && result.data
+    }
+  } catch (err) {
+    console.error('err', err)
+  }
 }
