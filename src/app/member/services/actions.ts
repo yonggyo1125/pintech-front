@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import { format } from 'date-fns'
 import { cookies } from 'next/headers'
 import apiRequest from '@/app/global/libs/apiRequest'
+import { revalidatePath } from 'next/cache'
 
 /**
  * 회원가입 처리
@@ -169,6 +170,9 @@ export const processLogin = async (params, formData: FormData) => {
   if (hasErrors) {
     return errors
   }
+
+  // 캐시 비우기
+  revalidatePath('/', 'layout')
 
   // 로그인 성공시 이동
   redirect(redirectUrl)
