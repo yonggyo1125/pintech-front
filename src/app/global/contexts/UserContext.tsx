@@ -1,5 +1,5 @@
 'use client'
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 
 const UserContext = createContext({
   state: { userInfo: undefined, isLogin: false, isAdmin: false },
@@ -16,6 +16,12 @@ const UserProvider = ({ children, _userInfo }) => {
   const [isAdmin, setIsAdmin] = useState(
     _userInfo && _userInfo._authorities.includes('ADMIN'),
   )
+
+  useEffect(() => {
+    if (_userInfo) {
+      setUserInfo(_userInfo)
+    }
+  }, [_userInfo])
 
   const value = {
     state: { userInfo, isLogin, isAdmin },

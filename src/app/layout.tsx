@@ -7,6 +7,7 @@ import { getUserInfo } from './member/services/actions'
 import { UserProvider } from './global/contexts/UserContext'
 import 'react-datepicker/dist/react-datepicker.css'
 import './globals.css'
+import { after } from 'next/server'
 
 export const metadata: Metadata = {
   title: '핀테크 과정 포트폴리오',
@@ -19,7 +20,6 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   const userInfo = await getUserInfo()
-  console.log('userInfo', userInfo)
   return (
     <html lang="ko">
       <body>
