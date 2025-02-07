@@ -26,4 +26,6 @@ export default async function apiRequest(url, method = 'GET', body) {
   }
 
   if (headers) options.headers = headers
+
+  return fetch(apiUrl, options)
 }
