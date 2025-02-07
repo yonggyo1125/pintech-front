@@ -19,6 +19,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   const userInfo = await getUserInfo()
+  console.log('userInfo', userInfo)
   return (
     <html lang="ko">
       <body>
