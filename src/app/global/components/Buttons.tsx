@@ -17,49 +17,105 @@ const commonStyle = css`
   }
 `
 
+function changeColor(color) {
+  const selected = color && buttonColors[color]
+  let _css = ''
+  if (selected) {
+    _css = `
+      background: ${selected[0]};
+      color: ${selected[1]};
+    `
+    if (!['light', 'white'].includes(color)) {
+      _css += `
+        border-color: ${selected[0]};
+      `
+    }
+  }
+
+  return css`
+    ${_css}
+  `
+}
+
 export const TinyButton = styled.button`
   ${commonStyle}
   height: 18px;
   font-size: ${tiny};
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width}px;
+    `}
+
+  ${({ color }) => changeColor(color)}
 `
 
 export const SmallButton = styled.button`
   ${commonStyle}
   height: 25px;
   font-size: ${small};
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width}px;
+    `}
+
+  ${({ color }) => changeColor(color)}
 `
 
 export const Button = styled.button`
   ${commonStyle}
   font-size: ${normal};
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width}px;
+    `}
+  ${({ color }) => changeColor(color)}
 `
 
 export const MediumButton = styled.button`
   ${commonStyle}
   height: 45px;
   font-size: ${medium};
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width}px;
+    `}
+
+  ${({ color }) => changeColor(color)}
 `
 
 export const BigButton = styled.button`
   ${commonStyle}
   height: 55px;
   font-size: ${big};
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width}px;
+    `}
+
+  ${({ color }) => changeColor(color)}
 `
 
 export const ExtraButton = styled.button`
   ${commonStyle}
   height: 65px;
   font-size: ${extra};
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width}px;
+    `}
+
+  ${({ color }) => changeColor(color)}
 `
 
 export const ButtonGroup = styled.div`
   display: flex;
   width: 100%;
-  ${({ width }) =>
-    width &&
-    css`
-      width: ${width};
-    `}
 
   button {
     width: 0;
@@ -69,4 +125,10 @@ export const ButtonGroup = styled.div`
       margin-left: 3px;
     }
   }
+
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width};
+    `}
 `
