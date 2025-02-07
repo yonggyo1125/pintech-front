@@ -122,6 +122,7 @@ const JoinForm = ({ form, onClick, onChange, onSelectDate, actionState }) => {
           placeholder="휴대폰번호"
           value={form?.phoneNumber ?? ''}
           onChange={onChange}
+          color="dark"
         />
         <Messages color="danger">{errors?.phoneNumber}</Messages>
 

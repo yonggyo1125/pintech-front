@@ -7,9 +7,7 @@ import { format } from 'date-fns'
  * @param formData
  */
 export const processJoin = async (params, formData: FormData) => {
-  //console.log('params', params)
-  //const redirectUrl = params?.get('redirectUrl') ?? '/member/login'
-  const redirectUrl = '/member/login'
+  const redirectUrl = params?.redirectUrl ?? '/member/login'
 
   const form = {}
   let errors = {}
@@ -44,7 +42,10 @@ export const processJoin = async (params, formData: FormData) => {
   }
 
   for (const [field, msg] of Object.entries(requiredFields)) {
-    if (!form[field] || !form[field].trim()) {
+    if (
+      !form[field] ||
+      (typeof form[field] === 'string' && !form[field].trim())
+    ) {
       errors[field] = errors[field] ?? []
       errors[field].push(msg)
       hasErrors = true
