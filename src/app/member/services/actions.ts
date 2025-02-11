@@ -17,20 +17,18 @@ export const processJoin = async (params, formData: FormData) => {
   let errors = {}
   let hasErrors = false
 
-  for (const v of formData.entries()) {
-    const key = v.key
-    let value = v.value
+  for (const [key, value] of formData.entries()) {
     if (key.includes('$ACTION')) continue
-
-    if (key === 'birthDt' && value && value.trim()) {
-      value = format(new Date(value), 'yyyy-MM-dd')
+    let _value: string | boolean = value.toString()
+    if (key === 'birthDt' && _value && _value.trim()) {
+      _value = format(new Date(_value), 'yyyy-MM-dd')
     }
 
-    if (['false', 'true'].includes(value)) {
-      value = value === 'true'
+    if (['false', 'true'].includes(_value)) {
+      _value = _value === 'true'
     }
 
-    form[key] = value
+    form[key] = _value
   }
 
   // 필수 항목 검증 S
